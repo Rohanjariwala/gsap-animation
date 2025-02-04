@@ -39,8 +39,7 @@ let anim = gsap.timeline({
     start: "-40px top",
     end: "+=6000",
     scrub: true,
-    pin: "#scroll_slider",
-    markers:true
+    pin: "#scroll_slider"
   }
 });
 
