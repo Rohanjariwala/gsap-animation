@@ -1,0 +1,174 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+section{
+    min-height: 100vh;
+}
+#scroll_slider{
+    overflow: hidden;
+}
+#scroll_slider .slider_bg{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+    padding: 40px 0;
+}
+#scroll_slider .slider_bg .slider_wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    max-height: 100vh;
+}
+#scroll_slider .middle{
+    overflow: hidden;
+}
+#scroll_slider .slide {
+    position: relative;
+    width: 90%;
+    height: 100%;
+    grid-area: 1/1/2/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 1.5rem;
+}
+#scroll_slider #slide_one{
+    isolation: isolate;
+}
+#scroll_slider #slide_one .contents{
+    color: #fff;
+    text-align: center;
+}
+#scroll_slider #slide_one .contents h4{
+    font-family: Raleway;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+#scroll_slider #slide_one .contents h2{
+    font-family: lato;
+    font-weight: 800;
+    font-size: 3.7rem;
+    line-height: 3.8rem;
+    text-transform: uppercase;
+}
+#scroll_slider #slide_one .team_image{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    z-index: -1;
+}
+#scroll_slider #slide_one .team_image img{
+    object-position: center top;
+}
+#slide_two{
+    background: #000;
+    color: #fff;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#slide_two .logo_list{
+    width: 100%;
+    flex-grow: 1;
+    display: grid;
+    place-content: center;
+    border-block: 2px solid #fff;
+}
+#slide_two .logo_list h2,
+#slide_three h2,
+#slide_four h2,
+#slide_five h2{
+    font-family: lato;
+    font-size: 3rem;
+    line-height: 3.2rem;
+    text-align: center;
+    margin-bottom: 35px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+#slide_two .text_slider{
+    padding-block: 1rem;
+    --gap:90px;
+    display: flex;
+    gap:var(--gap);
+    overflow: hidden;
+    width: 100%;
+}
+#slide_two .text_slider .text_wrapper{
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap:var(--gap);
+    animation: textslider infinite 20s linear;
+}
+#slide_two .animate .text_wrapper{
+    animation: textslider infinite 20s linear;
+}
+#slide_two .text_slider .text_wrapper .text{
+    flex-shrink: 0;
+    font-family: Raleway;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+}
+@keyframes textslider{
+    to{transform: translateX(calc(-100% - var(--gap)));}
+}
+.logos{
+    display: flex;
+    gap: 60px;
+}
+.logos img{
+    width: 100px;
+    object-fit: contain;
+}
+#slide_three{
+    background: #fff;
+}
+#slide_three h2{
+    margin: 0;
+    max-width: 1200px;
+}
+#slide_four{
+    background: #000;
+}
+#slide_four h2{
+    color: #fff;
+    margin: 0;
+}
+#slide_five{
+    background: #fff;
+    flex-direction: column;
+}
+#slide_five h2{
+    color: #000;
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+#slide_five h4{
+    font-family: Raleway;
+    text-decoration: underline;
+    text-underline-position: under;
+    cursor: pointer;
+}
