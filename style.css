@@ -11,6 +11,43 @@ img{
     height: 100%;
     object-fit: cover;
 }
+body::-webkit-scrollbar{
+    width: 0;
+}
+/** preloader section **/
+.preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    background: #fff;
+    display: grid;
+    justify-items: start;
+    align-items: end;
+    z-index: 9999;
+    padding: 1.5rem;
+    overflow: hidden;
+}
+.preloader_bg{
+    position: absolute;
+    inset: 0;
+    background: #ffd73b;
+    z-index: -1;
+}
+.preloader_counter {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: hidden;
+    height: 142px;
+    gap: 18px;
+    justify-items: start;
+    align-items: start;
+}
+.preloader_counter img{
+    width: 120px;
+    height: auto;
+}
+/** preloader section **/
 section{
     min-height: 100vh;
 }
