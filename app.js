@@ -15,9 +15,88 @@ gsap.ticker.add((time) => {
 
 gsap.ticker.lagSmoothing(0);
 
+
+// preloader animation 
+
+const preloader = ".preloader",
+      preloader_counter = ".preloader_counter",
+      preloder_background = ".preloader_bg",
+      counter_elements = [
+        document.querySelector('.counter1'),
+        document.querySelector('.counter2'),
+        document.querySelector('.counter3'),
+      ],
+      refrence = document.getElementById("counter_pic1");
+ var numberHeight = refrence.offsetHeight / 2;
+ var counterIndex = 1;
+ var pageIsDone = false;
+
+
+console.log(numberHeight);
+ const lodertimeline = gsap.timeline(); 
+
+ lodertimeline.to(preloder_background,{
+   yPercent:-100,
+   duration:1.4,
+   delay:1,
+   ease: "power3.inOut"
+ },"<")
+ .to(preloader_counter, {
+  yPercent: 150,
+  delay:0.5,
+  ease: "power1.inOut"
+})
+.to(preloader, {
+  autoAlpha: 0,
+  ease: "power2.inOut"
+}, "<")
+.set(preloader, {
+  yPercent: -100
+})
+
+lodertimeline.pause();
+console.log(numberHeight);
+function counterloop(){
+  gsap.to(counter_elements[2], {
+    y: -numberHeight*counterIndex*3,
+    duration: 2.5,
+    ease: "power4.inOut"
+});
+gsap.to(counter_elements[1], {
+  y: -numberHeight*counterIndex,
+  duration: 2.8,
+  ease: "power3.inOut"
+});
+counterIndex++; 
+console.log(counterIndex);
+ if(pageIsDone || counterIndex == 10){
+ 
+  gsap.to(counter_elements[2], {
+    y: -numberHeight*30,
+    duration: 2.5,
+    ease: "power4.inOut"
+});
+gsap.to(counter_elements[1], {
+  y: -numberHeight*10,
+  duration: 2.8,
+  ease: "power3.inOut"
+});
+gsap.to(counter_elements[0], {
+  y: -numberHeight,
+  duration: 2.5,
+  ease: "power2.inOut"
+});
+lodertimeline.play();
+ }
+  else if(counterIndex < 10){
+    counterloop();
+  }
+
+}
+counterloop();  
+
+// text_slider clone 
 const textcontainers = document.querySelectorAll('.text_slider');
-
-
 
 textcontainers.forEach(textcontainer => {
   const textWrap = textcontainer.querySelector('.text_wrapper');
@@ -28,7 +107,7 @@ textcontainers.forEach(textcontainer => {
  
 });
 
-// gsap animation 
+// section 3d card animation 
 gsap.set(".slide", { transformStyle: "preserve-3d", transformPerspective: 800 });
 gsap.set(".middle", { transformOrigin: "center top", y: window.innerHeight, rotationX: 40, scale: 1.1 });
 gsap.set(".team_image", { scale: 1.15 });
