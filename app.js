@@ -95,6 +95,101 @@ lodertimeline.play();
 }
 counterloop();  
 
+// preloader animation 
+
+// header animation 
+
+const menuLiNK = document.querySelector('.menu');
+const headerBg = document.querySelector('.header_bg');
+
+gsap.set(headerBg, {width:menuLiNK.offsetWidth + 18,height:menuLiNK.offsetHeight + 18})
+
+menuLiNK.addEventListener('mouseenter', function(){
+  headerBg.classList.add('active')
+});
+menuLiNK.addEventListener('mouseleave', function(){
+  headerBg.classList.remove('active')
+});
+
+// hero section animation 
+const nonHover = document.querySelectorAll('.non_hover');
+const hoverLinks = document.querySelectorAll('.video_link');
+const hoverLinksArray = Array.from(hoverLinks);
+const video_bg = document.querySelectorAll('.full_video');
+const inner_video = Array.from(document.querySelectorAll(".full_video video"));
+inner_video[0].load(),
+inner_video[1].load(),
+inner_video[2].load()
+let c = ["#0D99FE", "#FFD73B", "#F15F1B"];
+hoverLinks.forEach((hoverLink, i) =>{
+  setTimeout(()=> {
+    const otherLinks = hoverLinksArray.filter(link => link !== hoverLink);
+    hoverLink.addEventListener("mouseenter", function() {
+      let tm = gsap.timeline({
+        defaults: {
+        ease: "circ.inOut",
+        duration: .5
+      },
+      onStart: () => {
+        inner_video[i].play()
+       } 
+      });
+      tm.to(nonHover,{autoAlpha:0,});
+      tm.to(otherLinks, {autoAlpha:0},"<");
+      tm.to(inner_video[i], {
+        autoAlpha: 1,
+        scale: 1
+    }, "<"),
+      tm.to(hoverLink,{
+        "--animated-link-width": 0,
+        "--animated-link-opacity": 0,
+        paddingLeft: 12,
+        paddingRight: 12,
+        paddingTop: 6,
+        paddingBottom: 6,
+        marginLeft: -12,
+        marginRight: -12,
+        marginTop: -6,
+        marginBottom: -6,
+        backgroundColor: c[i]
+      },"<")
+    })
+    hoverLink.addEventListener("mouseleave", function() {
+      console.log('out');
+      let tmout = gsap.timeline({
+        default:{
+        ease: "circ.inOut",
+        duration: .5
+        },
+        onStart: () => {
+          inner_video[i].pause()
+         } 
+      })
+      tmout.to(nonHover,{autoAlpha:1});
+      tmout.to(otherLinks, {autoAlpha:1},"<");
+      tmout.to(inner_video[i], {
+        autoAlpha: 0,
+        scale: 1.15
+      }, "<"),
+      tmout.to(hoverLink,{
+        "--animated-link-width": "100%",
+        "--animated-link-opacity": 1,
+        paddingLeft: 0,
+        paddingRight: 0,
+        paddingTop: 0,
+        paddingBottom: 0,
+        marginLeft: 0,
+        marginRight: 0,
+        marginTop: 0,
+        marginBottom: 0,
+        backgroundColor: "transparent"
+      },"<")
+    })
+  }, 1000);
+ 
+ })
+
+
 // text_slider clone 
 const textcontainers = document.querySelectorAll('.text_slider');
 
