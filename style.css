@@ -1,6 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-
+:root{
+    --animated-link-width: 100%;
+    --animated-link-opacity: 1;
+}
 *{
     margin: 0;
     padding: 0;
@@ -48,6 +51,95 @@ body::-webkit-scrollbar{
     height: auto;
 }
 /** preloader section **/
+/** header **/
+#header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 9999999;
+    mix-blend-mode: difference;
+}
+#header a{
+    color: #000;
+    text-decoration: none;
+    font-family: lato;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+#header .menu{
+    font-family: raleway;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.4rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.header_bg {
+    position: fixed;
+    right: 0;
+    top: 15px;
+    background: #ffd73b;
+    border-radius: 5px;
+    z-index: -1;
+    margin-right: 24px;
+}
+/** header **/
+/** hero section **/
+#hero_section{
+    position: relative;
+    width: 100%;
+    isolation: isolate;
+    display: grid;
+    place-content: center;
+}
+#hero_section h2 {
+    font-size: 48px;
+    line-height: 55px;
+    width: 90vw;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: Raleway;
+    font-weight: 800;
+}
+#hero_section h2 .video_link {
+    position: relative;
+    cursor: pointer;
+    border-radius: 12px;
+}
+#hero_section h2 .video_link:after{
+    content: "";
+    position: absolute;
+    width: var(--animated-link-width);
+    opacity: var(--animated-link-opacity);
+    height: 4px;
+    background: #000;
+    left: 0;
+    bottom: 0;
+}
+.full_video{
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+.full_video video{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    object-fit: cover;
+    opacity: 0;
+}
+/** hero section **/
 section{
     min-height: 100vh;
 }
